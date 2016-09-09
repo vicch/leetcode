@@ -6,7 +6,6 @@ void printStrings(char** strs, int count);
 char** generateParenthesis(int n, int* returnSize);
 int power(int b, int p);
 char* convert(int n, int w);
-char* concatStr(char* a, char* b, char* c);
 
 int main()
 {
@@ -33,8 +32,8 @@ char** generateParenthesis(int n, int* returnSize)
     *returnSize = 0;
 
     for (i = 0; i < max; i++) {
-        if ((sol = convert(i, 2 * (n - 1))) != NULL) {
-            ret[(*returnSize)++] = concatStr("(", sol, ")");
+        if ((sol = convert(i, 2 * n)) != NULL) {
+            ret[(*returnSize)++] = sol;
         }
     }
 
@@ -51,16 +50,16 @@ int power(int b, int p)
 
 /**
  * Convert number to parenthese pattern
- * n=3,  w=4 -> 0011   -> (())
- * n=11, w=6 -> 001011 -> (()())
- * n=4,  w=4 -> 0100   -> NULL
+ * n=3,  w=6 -> (0011)   -> ((()))
+ * n=11, w=8 -> (001011) -> ((()()))
+ * n=4,  w=6 -> (0100)   -> NULL
  */
 char* convert(int n, int w)
 {
     int s = 0, i, j;
     char* str = malloc(sizeof(char) * (w + 1));
 
-    for (j = w - 1; j >= 0 && s >= -1; j--, n >>= 1) {
+    for (j = w - 2; j >= 1 && s >= -1; j--, n >>= 1) {
         i = n % 2;
         if (i == 0) {
             str[j] = '(';
@@ -70,16 +69,12 @@ char* convert(int n, int w)
             s++;
         }
     }
-    str[w] = '\0';
 
-    return (s == 0 && j < 0) ? str : NULL;
-}
-
-char* concatStr(char* a, char* b, char* c)
-{
-    char* ret = malloc(sizeof(char) * (strlen(a) + strlen(b) + strlen(c) + 1));
-    strcat(ret, a);
-    strcat(ret, b);
-    strcat(ret, c);
-    return ret;
+    if (s == 0 && j < 1) {
+        str[0]   = '(';
+        str[w-1] = ')';
+        str[w]   = '\0';
+        return str;
+    } else
+        return NULL;
 }
