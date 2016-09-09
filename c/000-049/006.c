@@ -1,25 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct node {
-    char c;
-    struct node *next;
-};
-
-struct row {
-    struct node *head;
-    struct node *tail;
-};
+#include <string.h>
 
 char* convert(char* s, int numRows);
-void addNode(struct row *r, char c);
 
 int main()
 {
-    char str[] = "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.";
-    char *res;
+    // char* str = "Apalindromeisaword,phrase,number,orothersequenceofunitsthatcanbereadthesamewayineitherdirection,withgeneralallowancesforadjustmentstopunctuationandworddividers.";
+    // char* res = convert(str, 3);
 
-    res = convert(str, 2);
+    char* str = "ABCD";
+    char* res = convert(str, 3);
+
     printf("%s\n", res);
 
     return 0;
@@ -27,62 +19,29 @@ int main()
 
 char* convert(char* s, int numRows)
 {
-    struct row *rows[numRows];
-    struct node *cur;
-    int i, j, incr;
-    char *res = malloc(1000);
+    if (numRows == 1) return s;
 
-    if (s[0] == '\0') {
-        return s;
-    }
+    int sl = strlen(s), nl = 0;
+    int i, j;
+    char* new = malloc(sizeof(char) * (sl + 1));
 
-    for (i = 0; i < numRows; i++) {
-        rows[i] = malloc(sizeof(struct row));
-        rows[i]->head = NULL;
-        rows[i]->tail = NULL;
-    }
+    // First row
+    for (i = 0; i < sl; i += (numRows - 1) * 2)
+        new[nl++] = s[i];
 
-    j = 0;
-    if (numRows == 1) {
-        incr = 0;
-    } else {
-        incr = 1;
-    }
-    for (i = 0; s[i] != '\0'; i++) {
-        addNode(rows[j], s[i]);
-        if (j + incr == numRows || j + incr < 0) {
-            incr = -incr;
-        }
-        j += incr;
-    }
-
-    j = 0;
-    for (i = 0; i < numRows; i++) {
-        if (rows[i]->head != NULL) {
-            cur = rows[i]->head;
-            res[j++] = cur->c;
-            cur = cur->next;
-            while (cur != NULL) {
-                res[j++] = cur->c;
-                cur = cur->next;
-            }
+    // Middle rows
+    for (i = 1; i < numRows - 1; i++) {
+        for (j = 0; j - i < sl; j += (numRows - 1) * 2) {
+            if (j > 0)      new[nl++] = s[j - i];
+            if (j + i < sl) new[nl++] = s[j + i];
         }
     }
 
-    return res;
-}
+    // Last row
+    for (i = numRows - 1; i < sl; i += (numRows - 1) * 2)
+        new[nl++] = s[i];
 
-void addNode(struct row *r, char c)
-{
-    struct node *new = malloc(sizeof(struct node));
-    new->c = c;
-    new->next = NULL;
+    new[nl] = '\0';
 
-    if (r->head == NULL) {
-        r->head = new;
-        r->tail = new;
-    } else {
-        r->tail->next = new;
-        r->tail = new;
-    }
+    return new;
 }
