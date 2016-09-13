@@ -4,8 +4,8 @@
 void printArray(int* array, int num);
 
 int* spiralOrder(int** matrix, int matrixRowSize, int matrixColSize);
-int* moveHorizontal(int* seq, int** matrix, int x, int y, int step, int count);
-int* moveVertical(int* seq, int** matrix, int x, int y, int step, int count);
+int* moveHorizontal(int* seq, int** matrix, int x, int y, int dir, int count);
+int* moveVertical(int* seq, int** matrix, int x, int y, int dir, int count);
 
 int main()
 {
@@ -31,39 +31,39 @@ void printArray(int* array, int num)
 int* spiralOrder(int** matrix, int matrixRowSize, int matrixColSize)
 {
     int* seq = malloc(sizeof(int) * matrixRowSize * matrixColSize);
-    int x = 0, y = 0, step = 1, count = matrixColSize;
+    int x = 0, y = 0, dir = 1, count = matrixColSize;
     int i;
 
     for (i = 1; ; i++) {
-        seq = moveHorizontal(seq, matrix, x, y, step, count);
-        x += step;
-        y += (count - 1) * step;
+        seq = moveHorizontal(seq, matrix, x, y, dir, count);
+        x += dir;
+        y += (count - 1) * dir;
         count = matrixRowSize - i;
         if (count <= 0) break;
         
-        seq = moveVertical(seq, matrix, x, y, step, count);
-        x += (count - 1) * step;
-        y -= step;
+        seq = moveVertical(seq, matrix, x, y, dir, count);
+        x += (count - 1) * dir;
+        y -= dir;
         count = matrixColSize - i;
         if (count <= 0) break;
-        step = -step;
+        dir = -dir;
     }
 
     return seq - matrixRowSize * matrixColSize;
 }
 
-int* moveHorizontal(int* seq, int** matrix, int x, int y, int step, int count)
+int* moveHorizontal(int* seq, int** matrix, int x, int y, int dir, int count)
 {
     int i;
-    for (i = 0; i < count; y += step, i++)
+    for (i = 0; i < count; y += dir, i++)
         *seq++ = matrix[x][y];
     return seq;
 }
 
-int* moveVertical(int* seq, int** matrix, int x, int y, int step, int count)
+int* moveVertical(int* seq, int** matrix, int x, int y, int dir, int count)
 {
     int i;
-    for (i = 0; i < count; x += step, i++)
+    for (i = 0; i < count; x += dir, i++)
         *seq++ = matrix[x][y];
     return seq;
 }
