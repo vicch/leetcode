@@ -7,6 +7,11 @@ int main()
 
 }
 
+/**
+ * Head pointer expects 0, if 1 or 2 shows, fetch a 0 from tail to overwrite,
+ * and count the numbers of 1s and 2s encountered. When head and tail meets,
+ * write the rest with 1s and 2s.
+ */
 void sortColors(int* nums, int numsSize)
 {
     int h = 0, t = numsSize - 1;
