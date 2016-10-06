@@ -6,20 +6,18 @@ void printBoard(char** board, int r);
 void printArray(int* array, int num);
 
 void solve(char** board, int boardRowSize, int boardColSize);
-int* markBorderCircles(int rSize, int cSize, int cirs[], int cirSize, int* bCirSize);
-int onBorder(int rSize, int cSize, int n);
-int* markAdjacentCircles(int cSize, int cirs[], int cirSize, int nsCirs[], int nsCirSize, int* newNsCirSize);
-int isAdjacent(int cSize, int a, int b);
+void markRecursive(int** all, int rSize, int cSize, int x, int y, int dir);
 
 int main()
 {
-    char* b1[3];
-    b1[0] = "XXX";
-    b1[1] = "XOX";
-    b1[2] = "XXX";
-    printBoard(b1, 3);
-    solve(b1, 3, 3);
-    printBoard(b1, 3);
+    char** b1 = malloc(sizeof(char*) * 4);
+    b1[0] = malloc(sizeof(char) * 6), strcpy(b1[0], "XOXOXO");
+    b1[1] = malloc(sizeof(char) * 6), strcpy(b1[1], "OXOXOX");
+    b1[2] = malloc(sizeof(char) * 6), strcpy(b1[2], "XOXOXO");
+    b1[3] = malloc(sizeof(char) * 6), strcpy(b1[3], "OXOXOX");
+    printBoard(b1, 4);
+    solve(b1, 4, 6);
+    printBoard(b1, 4);
 
     return 0;
 }
@@ -42,117 +40,74 @@ void printArray(int* array, int num)
 
 void solve(char** board, int boardRowSize, int boardColSize)
 {
-    if (!boardRowSize || !boardColSize) return;
+    if (boardRowSize < 3 || boardColSize < 3) return;
 
     int i, j;
 
-    // Circle positions list
-    int cirs[boardRowSize * boardColSize];
-    int cirSize = 0;
+    // Mark all positions: 0 == 'X', 1 == 'O'
+    int** all = malloc(sizeof(int*) * boardRowSize);
+    for (i = 0; i < boardRowSize; i++) 
+        all[i] = malloc(sizeof(int) * boardColSize);
 
-    // Get circle positions
+    // Border circle postions
+    int bCirs[boardRowSize*2 + boardColSize*2 - 4];
+    int bCirSize = 0;
+
+    // Mark positions
     for (i = 0; i < boardRowSize; i++) {
         for (j = 0; j < boardColSize; j++) {
-            if (board[i][j] == 'O')
-                cirs[cirSize++] = i * boardColSize + j;
+            if (board[i][j] == 'O') {
+                // If on borders
+                if (i == 0 || i == boardRowSize-1 || j == 0 || j == boardColSize-1)
+                    bCirs[bCirSize++] = i * boardColSize + j;
+                all[i][j] = 1;
+            } else
+                all[i][j] = 0;
         }
     }
 
-    if (!cirSize) return;
+    // printf("Border circles: ");
+    // printArray(bCirs, bCirSize);
 
-    printf("Init circles: ");
-    printArray(cirs, cirSize);
-
-    // Not surrounded circle positions list
-    int* nsCirs = NULL;
-    int nsCirSize = 0;
-
-    // Mark circles on borders as first batch of un-surrounded circles
-    nsCirs = markBorderCircles(boardRowSize, boardColSize, cirs, cirSize, &nsCirSize);
-
-    printf("Border circles = %d\n", nsCirSize);
-
-    // If there are un-surrounded circles, recursively find their adjacent circles
-    // and label as un-surrounded too
-    while (nsCirSize) {
-        printf("Un-surrounded circles: ");
-        printArray(nsCirs, nsCirSize);
-        nsCirs = markAdjacentCircles(boardColSize, cirs, cirSize, nsCirs, nsCirSize, &nsCirSize);
+    // Recursively mark connected circles as not surrounded
+    for (i = 0; i < bCirSize; i++) {
+        markRecursive(all, boardRowSize, boardColSize, bCirs[i] / boardColSize, bCirs[i] % boardColSize, 0);
     }
 
-    if (nsCirs) free(nsCirs);
+    // printf("Surrounded circles:\n");
+    // for (i = 0; i < boardRowSize; i++)
+    //     printArray(all[i], boardColSize);
 
-    printf("Surrounded circles: ");
-    printArray(cirs, cirSize);
-
-    // Change circles still in the list to crosses
-    for (i = 0; i < cirSize; i++) {
-        if (cirs[i] != -1) {
-            printf("Change circle (%d,%d)\n", cirs[i] / boardColSize, cirs[i] % boardColSize);
-            board[cirs[i] / boardColSize][cirs[i] % boardColSize] = 'X';
+    // Change un-marked 'O' to 'X'
+    for (i = 0; i < boardRowSize; i++) {
+        for (j = 0; j < boardColSize; j++) {
+            if (all[i][j]) {
+                // printf("Surrounded circle (%d,%d)\n", i, j);
+                board[i][j] = 'X';
+            }
         }
+        free(all[i]);
     }
+
+    free(all);
+
+    // printf("Board:\n");
+    // for (i = 0; i < boardRowSize; i++)
+    //     printf("%s\n", board[i]);
 
     return;
 }
 
-int* markBorderCircles(int rSize, int cSize, int cirs[], int cirSize, int* bCirSize)
+void markRecursive(int** all, int rSize, int cSize, int x, int y, int dir)
 {
-    *bCirSize = 0;
-    int* bCirs = malloc(sizeof(int) * (rSize*2 + cSize*2 - 4));
-    int i;
-
-    for (i = 0; i < cirSize; i++) {
-        if (onBorder(rSize, cSize, cirs[i])) {
-            bCirs[(*bCirSize)++] = cirs[i];
-            cirs[i] = -1; // Remove un-surrounded circle positions from list
-        }
+    // printf("Mark (%d,%d)\n", x, y);
+    if (all[x][y]) {
+        all[x][y] = 0;
+        // Do not mark borders or go back to coming direction
+        if (dir != 3 && x > 1) markRecursive(all, rSize, cSize, x-1, y, 1);       // Up
+        if (dir != 4 && y > 1) markRecursive(all, rSize, cSize, x, y-1, 2);       // Left
+        if (dir != 1 && x < rSize-2) markRecursive(all, rSize, cSize, x+1, y, 3); // Down
+        if (dir != 2 && y < cSize-2) markRecursive(all, rSize, cSize, x, y+1, 4); // Right
     }
-
-    return bCirs;
-}
-
-/**
- * If position N is on border
- */
-int onBorder(int rSize, int cSize, int n)
-{
-    return (n < cSize) ||
-           (n >= cSize * (rSize-1)) ||
-           (n % cSize == 0) ||
-           ((n+1) % cSize == 0);
-}
-
-int* markAdjacentCircles(int cSize, int cirs[], int cirSize, int nsCirs[], int nsCirSize, int* newNsCirSize)
-{
-    // Each un-surrounded circles can lead to 3 adjacent circles at most
-    int* newNsCirs = malloc(sizeof(int) * nsCirSize * 3);
-    int newNsCirSizeTmp = 0;
-    int i, j;
-
-    for (i = 0; i < nsCirSize; i++) {
-        for (j = 0; j < cirSize; j++) {
-            if (cirs[j] != -1 && isAdjacent(cSize, nsCirs[i], cirs[j])) {
-                newNsCirs[newNsCirSizeTmp++] = cirs[j];
-                cirs[j] = -1; // Remove un-surrounded circle from list
-            }
-        }
-    }
-
-    // Free last batch of un-surrounded circle positions
-    free(nsCirs);
-    *newNsCirSize = newNsCirSizeTmp;
-
-    return newNsCirs;
-}
-
-/**
- * If position A and position B are adjacent
- */
-int isAdjacent(int cSize, int a, int b)
-{
-    return (a == b+1 && a % cSize != 0) ||
-           (b == a+1 && b % cSize != 0) ||
-           (a == b+cSize) ||
-           (b == a+cSize);
+    return;
 }
