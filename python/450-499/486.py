@@ -1,5 +1,5 @@
 """
-Question:
+Problem:
 Given an array of scores that are non-negative integers. Player 1 picks one
 of the numbers from either end of the array followed by the player 2 and
 then player 1 and so on. This continues until all the scores have been
