@@ -14,7 +14,6 @@ Solution:
 """
 
 class MinStack(object):
-    nums, mins
 
     def __init__(self):
         """
@@ -29,7 +28,7 @@ class MinStack(object):
         :rtype: void
         """
         self.nums.append(x)
-        if !self.mins or x < self.nums[self.mins[-1]]
+        if not self.mins or x < self.nums[self.mins[-1]]:
             self.mins.append(len(self.nums) - 1)
         
 
