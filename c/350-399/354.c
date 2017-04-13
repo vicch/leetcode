@@ -44,26 +44,26 @@ int maxEnvelopes(int** envelopes, int envelopesRowSize, int envelopesColSize)
 
 int maxEnvelopesSub(int** envelopes, int count, int index, int width, int height, int* cache)
 {
+    while (index < count && (envelopes[index][0] <= width || envelopes[index][1] <= height))
+        index++;
+
     if (index == count)
         return 0;
 
     int useMax, nouseMax;
 
-    // Can use this envelope
-    if (envelopes[index][0] > width && envelopes[index][1] > height) {
-        // Max when using this envelope
-        if (cache[index] != -1)
-            useMax = cache[index];
-        else {
-            useMax = 1 + maxEnvelopesSub(envelopes, count, index + 1, envelopes[index][0], envelopes[index][1], cache);
-            cache[index] = useMax;
-        }
-        nouseMax = maxEnvelopesSub(envelopes, count, index + 1, width, height, cache);
-        return useMax > nouseMax ? useMax : nouseMax;
+    // Max when using this envelope
+    if (cache[index] != -1)
+        useMax = cache[index];
+    else {
+        useMax = 1 + maxEnvelopesSub(envelopes, count, index + 1, envelopes[index][0], envelopes[index][1], cache);
+        cache[index] = useMax;
+    }
 
-    // Cannot use this envelope
-    } else
-        return maxEnvelopesSub(envelopes, count, index + 1, width, height, cache);
+    // Max when not using this envelope
+    nouseMax = maxEnvelopesSub(envelopes, count, index + 1, width, height, cache);
+
+    return useMax > nouseMax ? useMax : nouseMax;
 }
 
 int cmpEnvelope(const void* a, const void* b)
