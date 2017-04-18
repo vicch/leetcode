@@ -50,9 +50,9 @@ int** m;
 int r;
 int c;
 
-int* cache[2];
-int path[100][2];
-int pi;
+int* cache[2];    // Result cache, each cell's ability to flow to 2 oceans
+int path[100][2]; // Path cache, assume max path as 100
+int pi;           // Path cache index
 
 int pacificAtlanticSub(int ocean, int x, int y);
 void addPath(int x, int y);
@@ -75,12 +75,13 @@ int** pacificAtlantic(int** matrix, int matrixRowSize, int matrixColSize, int** 
     cache[0] = malloc(sizeof(int) * matrixRowSize * matrixColSize);
     cache[1] = malloc(sizeof(int) * matrixRowSize * matrixColSize);
 
+    // Init result cache as -1, meaning "not checked"
     memset(cache[0], -1, sizeof(int) * matrixRowSize * matrixColSize);
     memset(cache[1], -1, sizeof(int) * matrixRowSize * matrixColSize);
-    memset(path, 0, sizeof(path));
 
     int i, j, a, b;
 
+    // Init cache for cells on edges
     for (i = 0; i < r; i++) {
         cache[0][i * c] = 1;
         cache[1][i * c + c - 1] = 1;
@@ -92,6 +93,7 @@ int** pacificAtlantic(int** matrix, int matrixRowSize, int matrixColSize, int** 
 
     for (i = pi = 0; i < r; i++)
         for (j = 0; j < c; j++) {
+            // Path resets after each run
             a = pacificAtlanticSub(0, i, j), pi = 0;
             b = pacificAtlanticSub(1, i, j), pi = 0;
             if (a == 1 && b == 1) {
@@ -110,9 +112,11 @@ int** pacificAtlantic(int** matrix, int matrixRowSize, int matrixColSize, int** 
 
 int pacificAtlanticSub(int ocean, int x, int y)
 {
+    // Cache hit
     if (cache[ocean][x * c + y] > -1)
         return cache[ocean][x * c + y];
     
+    // Do not check cell if it's already in path
     if (inPath(x, y))
         return 2;
 
@@ -125,14 +129,15 @@ int pacificAtlanticSub(int ocean, int x, int y)
         (y < c - 1 && m[x][y] >= m[x][y+1] && (right = pacificAtlanticSub(ocean, x, y + 1)) == 1) ||
         (x < r - 1 && m[x][y] >= m[x+1][y] && (down = pacificAtlanticSub(ocean, x + 1, y)) == 1) ||
         (y > 0 && m[x][y] >= m[x][y-1] && (left = pacificAtlanticSub(ocean, x, y - 1)) == 1)
-    ) {
-        
+    )
         return cache[ocean][x * c + y] = 1;
-    }
 
+    // If no adjacent cell can flow to the ocean, and any of them is in path,
+    // consider this cell as in path too
     if (up == 2 || right == 2 || down == 2 || left == 2)
         return 2;
 
+    // Not able to flow to the ocean
     return cache[ocean][x * c + y] = 0;
 }
 
