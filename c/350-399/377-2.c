@@ -13,6 +13,12 @@
 // (2, 1, 1)
 // (2, 2)
 // (3, 1)
+// 
+// Solution:
+// Consider the relation between the combinations of target and target-n, if
+// n exists in the array, it forms a combination of target by appending n to
+// each combination of target-n. Thus combination(n) = sum(combination(n-i) for
+// each i exists in the array). Use DP to store intermediate results.
 
 #include <stdio.h>
 #include <string.h>
@@ -38,73 +44,17 @@ int main()
 
 /********** Solution **********/
 
-int combinationSub(int* nums, int nsize, int nindex, int target, int* solution, int sindex, int* cache);
-int arrangement(int* nums, int size);
-int cmpNum(const void * a, const void * b);
-
 int combinationSum4(int* nums, int numsSize, int target)
 {
-    qsort(nums, numsSize, sizeof(int), cmpNum);
+    int dp[target + 1], i, j;
 
-    // Ignore numbers greater than target
-    for (; numsSize > 0 && nums[numsSize - 1] > target; numsSize--)
-        ;
+    memset(dp, 0, sizeof(dp));
+    dp[0] = 1;
 
-    if (numsSize == 0 || target == 0)
-        return 0;
-    
-    // Need to know the maximum number of solutions without hash map
-    int solution[numsSize * 7000];
-    int cache[(target + 1) * numsSize];
-    int scount, total, i;
+    for (i = 1; i <= target; i++)
+        for (j = 0; j < numsSize; j++)
+            if (i >= nums[j])
+                dp[i] += dp[i - nums[j]];
 
-    memset(solution, 0, sizeof(solution));
-    memset(cache, -1, sizeof(cache));
-
-    scount = combinationSub(nums, numsSize, 0, target, solution, 0, cache);
-
-    for (total = i = 0; i < scount; i++)
-        total += arrangement(solution + numsSize * i, numsSize);
-
-    return total;
-}
-
-int combinationSub(int* nums, int nsize, int nindex, int target, int* solution, int sindex, int* cache)
-{
-    if (cache[target * nsize + nindex] == 0)
-        return 0;
-
-    if (nindex == nsize || nums[nindex] > target)
-        return cache[target * nsize + nindex] = (target == 0);
-
-    int scount, soffset, i, j;
-
-    for (scount = soffset = i = 0; nums[nindex] * i <= target; i++) {
-        scount += combinationSub(nums, nsize, nindex + 1, target - nums[nindex] * i, solution, sindex + soffset, cache);
-        for (j = soffset; j < scount; j++)
-            solution[(sindex + j) * nsize + nindex] = i;
-        soffset = scount;
-    }
-
-    return cache[target * nsize + nindex] = scount;
-}
-
-int arrangement(int* nums, int size)
-{
-    int sum, total, i, j;
-
-    for (sum = i = 0, total = 1; i < size; i++) {
-        for (j = 1; j <= nums[i]; j++) {
-            total *= sum + j;
-            total /= j;
-        }
-        sum += nums[i];
-    }
-
-    return total;
-}
-
-int cmpNum(const void * a, const void * b)
-{
-    return (*(int*)a - *(int*)b);
+    return dp[target];
 }
