@@ -14,6 +14,12 @@
 // Example:
 // Input: S = "2-4A0r7-4k", K = 3
 // Output: "24-A0R-74K"
+// 
+// Solution:
+// Get the key length without dashes, and calculate how many dashes are needed
+// and the length of the first group before any dash. Then by using a counter
+// to know when to insert a dash, make a new string while iterating the old
+// string and ignore dashes.
 
 #include <stdio.h>
 #include <stdlib.h>
