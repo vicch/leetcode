@@ -16,6 +16,14 @@
 //        endWord = "cog"
 //        wordList = ["hot","dot","dog","lot","log","cog"]
 // Output: 5 ("hit" -> "hot" -> "dot" -> "dog" -> "cog")
+// 
+// Solution:
+// Consider each word as a node. If one word can be transformed to another,
+// their nodes are connected by an edge. The problem becomes finding the
+// shortest path from one node to another in an undirected graph. Start from
+// the ending node, BFS mark each node's distance to it. Then find the nodes
+// that can be transformed from the beginning word and get the their shortest
+// distance.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,15 +60,12 @@ int pop(struct Queue* queue);
 int empty(struct Queue* queue);
 void destroy(struct Queue* queue);
 
+int isConnected(char* a, char* b);
 int markConnection(int** map, char** words, int size, char* end);
 void markLength(int** map, int* len, int size, int endIndex);
-int isConnected(char* a, char* b);
 
 int ladderLength(char* beginWord, char* endWord, char** wordList, int wordListSize)
 {
-    if (strcmp(beginWord, "nape") == 0 && strcmp(endWord, "mild") == 0)
-        return 6;
-
     if (wordListSize == 0)
         return 0;
 
@@ -97,6 +102,17 @@ int ladderLength(char* beginWord, char* endWord, char** wordList, int wordListSi
 
     // Plus 1 for the begin word
     return shortest + 1;
+}
+
+int isConnected(char* a, char* b)
+{
+    int diff;
+
+    for (diff = 0; *a != '\0' && *b != '\0'; a++, b++)
+        if (*a != *b)
+            diff++;
+
+    return (*a == *b) ? (diff == 1) : 0;
 }
 
 int markConnection(int** map, char** words, int size, char* end)
@@ -136,17 +152,6 @@ void markLength(int** map, int* len, int size, int endIndex)
     destroy(queue);
 
     return;
-}
-
-int isConnected(char* a, char* b)
-{
-    int diff;
-
-    for (diff = 0; *a != '\0' && *b != '\0'; a++, b++)
-        if (*a != *b)
-            diff++;
-
-    return (*a == *b) ? (diff == 1) : 0;
 }
 
 struct Queue* create(int size)
