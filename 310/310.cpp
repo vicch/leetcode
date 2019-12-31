@@ -15,7 +15,7 @@ public:
 			return ret;
 		}
 
-		vector<vector<int>> adj(n);    // Adjacent lists
+		vector<vector<int>> adj(n);    // Adjacency lists
 		vector<int> leaves;            // Current leaf nodes
 		int edgeCounts[n] = {0};       // Count of remaining edges of each node
 		int edgeRemain = edges.size(); // Count of total remaining edges
@@ -40,7 +40,7 @@ public:
 			for (int i : leaves) {
 				edgeCounts[i] = 0;
 
-				// Remove the leaf node from adjacent list of its adjacent nodes
+				// Remove the leaf node from adjacency list of its adjacent nodes
 				for (int j : adj[i]) {
 					if (edgeCounts[j] > 1) {
 						edgeCounts[j] -= 1;
