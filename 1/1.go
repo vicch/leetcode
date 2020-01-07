@@ -1,12 +1,15 @@
 func twoSum(nums []int, target int) []int {
-	numsMap := make(map[int]int)
-	for idx, val := range nums {
+	cache := make(map[int]int)
+
+	for i, val := range nums {
 		// Look for corresponding number
-		if (numsMap[target - val] > 0) {
-			return []int {numsMap[target - val] - 1, idx}
+		if j, ok := cache[target - val]; ok {
+			return []int {j, i}
 		}
+
 		// Not found, push this number into the map
-		numsMap[val] = idx + 1
+		cache[val] = i
 	}
+
 	return []int {-1, -1}
 }
