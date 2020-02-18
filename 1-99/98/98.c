@@ -1,33 +1,34 @@
-#include <stdio.h>
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
 
 bool isValidBST(struct TreeNode* root);
-bool isValidBSTSub(struct TreeNode* root, int min, int max);
-
-int main()
-{
-    // {}
-    // {1,2,3}
-    // {2,1,3}
-    // {10,5,15,null,null,6,20}
-    // {2147483647}
-    // {2147483647, 2147483647}
-    // {-2147483648}
-    // {-2147483648,-2147483648}
-
-    return 0;
-}
+bool isValidBSTRecursive(struct TreeNode* root, long min, long max);
 
 bool isValidBST(struct TreeNode* root)
 {
-    return isValidBSTSub(root, -2147483648, 2147483647);
+	// It's tricky if the tree may contain boundary values of the data type.
+	// Here we use boundary values of LONG because the tests only contain INT
+	// values.
+	return isValidBSTRecursive(root, LONG_MIN, LONG_MAX);
 }
 
-bool isValidBSTSub(struct TreeNode* root, int min, int max)
+// Check if the given tree is BST by checking if its value is within the given
+// range, and if its child trees are BSTs.
+bool isValidBSTRecursive(struct TreeNode* root, long min, long max)
 {
-    if (!root) return 1;
-    if (min != -2147483648 && root->val < min) return 0;
-    if (max != 2147483647 && root->val > max) return 0;
-    if (root->left && (root->val == -2147483648 || !isValidBSTSub(root->left, min, root->val-1))) return 0;
-    if (root->right && (root->val == 2147483647 || !isValidBSTSub(root->right, root->val+1, max))) return 0;
-    return 1;
+	if (!root) {
+		return true;
+	}
+
+	// Check root node's value against the range
+	return root->val > min && root->val < max
+		// Recursively check child trees
+		&& isValidBSTRecursive(root->left, min, root->val)
+		&& isValidBSTRecursive(root->right, root->val, max);
 }
