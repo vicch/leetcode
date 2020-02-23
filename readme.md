@@ -11,3 +11,4 @@
 | 111 | [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)                                     | `Binary Tree` `DFS` `BFS`                            |
 | 120 | [Triangle](https://leetcode.com/problems/triangle/)                                                                             | `Dynamic Programming` `Optimization`                 |
 | 124 | [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                                     | `Binary Tree` `Optimization` `DFS`                   |
+| 136 | [Single Number](https://leetcode.com/problems/single-number/)                                                                   | `Bit Manipulation`                                   |

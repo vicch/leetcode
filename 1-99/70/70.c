@@ -1,29 +1,16 @@
-#include <stdio.h>
-
-int climbStairs(int n);
-
-int main()
-{
-    printf("%d\n", climbStairs(3));
-    printf("%d\n", climbStairs(4));
-    printf("%d\n", climbStairs(5));
-    printf("%d\n", climbStairs(6));
-    printf("%d\n", climbStairs(44));
-
-    return 0;
-}
-
 int climbStairs(int n)
 {
-    if (n == 1)
-        return 1;
+	if (n == 1)
+		return 1;
 
-    int a, b;
-    a = b = 1;
-    for (; n > 1; n--) {
-        b += a;
-        a = b - a;
-    }
+	// Values of the last 2 items, they will calculate the next item and be updated accordingly
+	// for the next iteration
+	int a = 1, b = 1;
 
-    return b;
+	for (; n > 1; n--) {
+		b = a + b; // next b = current a + current b
+		a = b - a; // next a = current a + current b - current a = current b
+	}
+
+	return b;
 }
