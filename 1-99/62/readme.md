@@ -58,6 +58,10 @@ Then it reachs the bottom row or right-most column (where the paths are already 
 
 Note that many cells are calculated repeatedly, this can be optimizez by memorization (store the temp results in an array).
 
+## Bottom-up
+
+Based on the table in backtracking solution, we can populate the cells one by one (the bottom row and right-most column are pre-populated with 1s) with the number of paths starting from this cell, then return the value in the top-left cell.
+
 ## Combination
 
 For a `m x n` grid, no matter what path it is, it must be a combination of `m - 1` moves to the right side and `n - 1` moves to the down side.
