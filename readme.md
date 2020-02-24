@@ -3,6 +3,7 @@
 | #   | Problem                                                                                                                         | Tag                                                  |
 |----:|:--------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|
 |   3 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | `String` `Substring` `Two Pointers` `Sliding Window` |
+|  53 | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)                                                             | `Array` `Optimization` `Dynamic Programming`         |
 |  62 | [Unique Paths](https://leetcode.com/problems/unique-paths/)                                                                     | `Dynamic Programming` `Backtracking` `Memorization`  |
 |  63 | [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)                                                               | `Dynamic Programming`                                |
 |  70 | [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)                                                               | `Dynamic Programming`                                |
@@ -12,6 +13,6 @@
 | 109 | [Convert Sorted List to Binary Search Tree](https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)           | `Binary Tree` `BST` `DFS` `Linked List`              |
 | 110 | [Balanced Binary Tree](https://leetcode.com/problems/balanced-binary-tree/)                                                     | `Binary Tree` `DFS`                                  |
 | 111 | [Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)                                     | `Binary Tree` `DFS` `BFS`                            |
-| 120 | [Triangle](https://leetcode.com/problems/triangle/)                                                                             | `Dynamic Programming` `Optimization`                 |
+| 120 | [Triangle](https://leetcode.com/problems/triangle/)                                                                             | `Optimization` `Dynamic Programming`                 |
 | 124 | [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                                     | `Binary Tree` `Optimization` `DFS`                   |
 | 136 | [Single Number](https://leetcode.com/problems/single-number/)                                                                   | `Bit Manipulation`                                   |
