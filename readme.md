@@ -4,6 +4,7 @@
 |----:|:--------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|
 |   3 | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | `String` `Substring` `Two Pointers` `Sliding Window` |
 |  62 | [Unique Paths](https://leetcode.com/problems/unique-paths/)                                                                     | `Dynamic Programming` `Backtracking` `Memorization`  |
+|  63 | [Unique Paths II](https://leetcode.com/problems/unique-paths-ii/)                                                               | `Dynamic Programming`                                |
 |  70 | [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)                                                               | `Dynamic Programming`                                |
 |  98 | [Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)                                       | `Binary Tree` `BST` `DFS`                            |
 | 104 | [Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)                                     | `Binary Tree` `DFS`                                  |
