@@ -18,10 +18,10 @@ func pathSumContinuous(root *TreeNode, sum int) int {
 		path += 1
 	}
 
-	// Paths starting from a previous node and ending on any node in left child tree
+	// Paths starting from a previous node and ending on any node in left subtree
 	path += pathSumContinuous(root.Left, sum-root.Val)
 
-	// Paths starting from a previous node and ending on any node in right child tree
+	// Paths starting from a previous node and ending on any node in right subtree
 	path += pathSumContinuous(root.Right, sum-root.Val)
 
 	return path
@@ -37,10 +37,10 @@ func pathSum(root *TreeNode, sum int) int {
 	// Paths starting from current node
 	path += pathSumContinuous(root, sum)
 
-	// Paths starting from any node in left child tree
+	// Paths starting from any node in left subtree
 	path += pathSum(root.Left, sum)
 
-	// Paths starting from any node in right child tree
+	// Paths starting from any node in right subtree
 	path += pathSum(root.Right, sum)
 
 	return path

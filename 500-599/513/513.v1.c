@@ -14,7 +14,7 @@
 // Output: 7
 // 
 // Solution:
-// Recursively get the leftmost value of each child tree with a depth returned.
+// Recursively get the leftmost value of each subtree with a depth returned.
 // Return the one with larger depth.
 
 #include <stdio.h>

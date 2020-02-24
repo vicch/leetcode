@@ -17,6 +17,6 @@ output = 3
 
 # Solution
 
-This is a recursive problem: the max depth of a `root` node equals to the bigger value between its `left` and `right` child tree's max depth plus 1 (`root` node's own depth).
+This is a recursive problem: the max depth of a `root` node equals to the bigger value between its `left` and `right` subtree's max depth plus 1 (`root` node's own depth).
 
 So it can be solved recursively.

@@ -2,7 +2,7 @@
 
 Given a singly linked list where elements are sorted in ascending order, convert it to a height-balanced BST.
 
-A height-balanced binary tree is defined as a binary tree in which the depth of the two child trees of every node never differ by more than 1.
+A height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 
 ## Example
 

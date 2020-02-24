@@ -16,4 +16,4 @@ result = 9 + 15 = 24
 
 # Solution
 
-If current tree's left node is a leaf, return its value. Otherwise get sum of left and right child trees recursively.
+If current tree's left node is a leaf, return its value. Otherwise get sum of left and right subtrees recursively.

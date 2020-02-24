@@ -19,7 +19,7 @@ output = 2
 
 ## DFS
 
-The minimum depth of any root node should be the smaller one of the minimum depths of its left and right child trees. But note the edge case when the left or right child tree is empty, in this case the minimum depth is not counted as 0, it is ignored instead.
+The minimum depth of any root node should be the smaller one of the minimum depths of its left and right subtrees. But note the edge case when the left or right subtree is empty, in this case the minimum depth is not counted as 0, it is ignored instead.
 
 ## BFS
 

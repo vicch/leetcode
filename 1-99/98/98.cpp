@@ -11,7 +11,7 @@
 class Solution {
 private:
 	// Check if the given tree is BST by checking if its value is within the
-	// given range, and if its child trees are BSTs.
+	// given range, and if its subtrees are BSTs.
 	bool isValidBSTRecursive(TreeNode* root, long min, long max) {
 		if (!root) {
 			return true;
@@ -19,7 +19,7 @@ private:
 
 		// Check root node's value against the range
 		return root->val > min && root->val < max
-			// Recursively check child trees
+			// Recursively check subtrees
 			&& isValidBSTRecursive(root->left, min, root->val)
 			&& isValidBSTRecursive(root->right, root->val, max);
 	}

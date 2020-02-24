@@ -17,10 +17,10 @@ private:
 			(root->val == sum) +                             // Path ending on current node
 			pathSumContinuous(root->left, sum - root->val) + // Paths starting from a previous
 			                                                 // node and ending on any node in
-			                                                 // left child tree
+			                                                 // left subtree
 			pathSumContinuous(root->right, sum - root->val); // Paths starting from a previous
 			                                                 // node and ending on any node in
-			                                                 // right child tree
+			                                                 // right subtree
 	}
 public:
 	int pathSum(TreeNode* root, int sum) {
@@ -28,7 +28,7 @@ public:
 			return 0;
 		return
 			pathSumContinuous(root, sum) + // Paths starting from current node
-			pathSum(root->left, sum) + // Paths starting from any node in left child tree
-			pathSum(root->right, sum); // Paths starting from any node in right child tree
+			pathSum(root->left, sum) + // Paths starting from any node in left subtree
+			pathSum(root->right, sum); // Paths starting from any node in right subtree
 	}
 };

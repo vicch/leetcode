@@ -15,11 +15,11 @@ public:
 		if (!root)
 			return 0;
 		
-		// If no left child tree, only check right child tree
+		// If no left subtree, only check right subtree
 		if (!root->left)
 			return minDepth(root->right) + 1;
 		
-		// If no right child tree, only check left child tree
+		// If no right subtree, only check left subtree
 		if (!root->right)
 			return minDepth(root->left) + 1;
 		

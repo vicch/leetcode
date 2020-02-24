@@ -13,11 +13,11 @@
 // 
 // Solution:
 // Recursively compute the diameter for each node, and return 2 values:
-// - The depth of all child trees of this node, which equals to 1 + the larger
-//   one between "left child tree's depth" and "right child tree's depth".
+// - The depth of all subtrees of this node, which equals to 1 + the larger
+//   one between "left subtree's depth" and "right subtree's depth".
 // - The diameter of this node, which equals the largest one between "left
-//   child tree's depth + right child tree's depth + 2" and "left child tree's
-//   diameter" and "right child tree's diameter".
+//   subtree's depth + right subtree's depth + 2" and "left subtree's
+//   diameter" and "right subtree's diameter".
 
 class Solution {
 public:

@@ -24,7 +24,7 @@ struct TreeNode* sortedArrayRangeToBST(int* nums, int from, int to) {
 	// number.
 	int mid = (from + to + 1) / 2;
 	
-	// Create the root node and left and right child trees recursively
+	// Create the root node and left and right subtrees recursively
 	struct TreeNode* root = malloc(sizeof(struct TreeNode));
 	root->val = nums[mid];
 	root->left = sortedArrayRangeToBST(nums, from, mid - 1);

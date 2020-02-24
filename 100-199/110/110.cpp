@@ -17,12 +17,12 @@ private:
 			return 0;
 		
 		int ld = getHeight(root->left);
-		// If left child tree is unbalanced, this tree is unbalanced
+		// If left subtree is unbalanced, this tree is unbalanced
 		if (ld == -1)
 			return -1;
 		
 		int rd = getHeight(root->right);
-		// If right child tree is unbalanced, this tree is unbalanced
+		// If right subtree is unbalanced, this tree is unbalanced
 		if (rd == -1)
 			return -1;
 		

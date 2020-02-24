@@ -33,7 +33,7 @@ private:
 		// even number.
 		int mid = (start + end + 1) / 2;
 		
-		// Inorder traversal step 1: visit left child tree
+		// Inorder traversal step 1: visit left subtree
 		TreeNode* left = sortedListRangeToBST(start, mid - 1);
 
 		// Inorder traversal step 2: visit root node
@@ -42,7 +42,7 @@ private:
 		// Move the pointer forward after assigning its value to root node
 		current = current->next;
 		
-		// Inorder traversal step 3: visit right child tree
+		// Inorder traversal step 3: visit right subtree
 		TreeNode* right = sortedListRangeToBST(mid + 1, end);
 		
 		// Assemble the tree

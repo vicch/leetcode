@@ -30,7 +30,7 @@ private:
 		// even number.
 		int mid = (from + to + 1) / 2;
 
-		// Create the root node and left and right child trees recursively
+		// Create the root node and left and right subtrees recursively
 		TreeNode* root = new TreeNode(nums[mid]);
 		root->left = sortedArrayRangeToBST(nums, from, mid - 1),
 		root->right = sortedArrayRangeToBST(nums, mid + 1, to);

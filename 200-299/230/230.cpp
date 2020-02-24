@@ -4,7 +4,7 @@
 // 
 // Solution:
 // Recursively looking for the kth element by decreasing k while in-order
-// traversing the tree. Whenever k becomes 1 after left child tree traversal,
+// traversing the tree. Whenever k becomes 1 after left subtree traversal,
 // current root is the answer.
 
 #include <iostream>
@@ -38,11 +38,11 @@ public:
     }
 
     void kthRecursive(TreeNode* root) {
-        // Traverse left child tree
+        // Traverse left subtree
         if (root->left)
             kthRecursive(root->left);
 
-        // If kth element found in left child tree
+        // If kth element found in left subtree
         if (a->node)
             return;
 
@@ -55,7 +55,7 @@ public:
         // Minus current root
         a->k -= 1;
 
-        // Traverse right child tree
+        // Traverse right subtree
         if (root->right)
             kthRecursive(root->right);
         
