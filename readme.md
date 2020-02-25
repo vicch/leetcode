@@ -16,3 +16,4 @@
 | 120 | [Triangle](https://leetcode.com/problems/triangle/)                                                                             | `Optimization` `Dynamic Programming`                 |
 | 124 | [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)                                     | `Binary Tree` `Optimization` `DFS`                   |
 | 136 | [Single Number](https://leetcode.com/problems/single-number/)                                                                   | `Bit Manipulation`                                   |
+| 152 | [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)                                             | `Array` `Optimization` `Dynamic Programming`         |
