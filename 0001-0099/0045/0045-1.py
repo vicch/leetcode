@@ -6,7 +6,7 @@ class Solution(object):
         """
         # Recursively find the optimal jump to each position, starting from the last position
         return self.recur_jump(nums, len(nums) - 1)
-    
+
     def recur_jump(self, nums, index):
         if index == 0:
             return 0
