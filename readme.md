@@ -2,8 +2,8 @@
 
 | #    | Difficulty | Problem                                                                                           | Data Structures      | Patterns              | Blind 75 |
 |-----:|:-----------|:--------------------------------------------------------------------------------------------------|:---------------------|:----------------------|:--------:|
-| 0001 | Easy       | [Two sum](https://leetcode.com/problems/two-sum/)                                                 | `Array` `Hash table` |                       | Y        |
-| 0121 | Easy       | [Best time to buy and sell stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | `Array`              | `Dynamic programming` | Y        |
+| 0001 | Easy       | [Two Sum](https://leetcode.com/problems/two-sum/)                                                 | `Array` `Hash Table` |                       | Y        |
+| 0121 | Easy       | [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | `Array`              | `Dynamic Programming` | Y        |
 
 # Lists
 
