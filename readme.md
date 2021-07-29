@@ -1,6 +1,6 @@
 # Top Problems
 
-| #                                                       | Problem                                                                                           | Difficulty | Data Structures      | Patterns              | Blind 75 |
+| Problem #                                               | LeetCode Link                                                                                     | Difficulty | Data Structures      | Patterns              | Blind 75 |
 |--------------------------------------------------------:|:--------------------------------------------------------------------------------------------------|:-----------|:---------------------|:----------------------|:--------:|
 | [0001](0001-0099/0001-two-sum/)                         | [Two Sum](https://leetcode.com/problems/two-sum/)                                                 | Easy       | `Array` `Hash Table` |                       | Y        |
 | [0121](0100-0199/0121-best-time-to-buy-and-sell-stock/) | [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | Easy       | `Array`              | `Dynamic Programming` | Y        |
