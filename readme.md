@@ -1,6 +1,6 @@
 # Top Problems
 
-| #    | LeetCode Link                                                                                               | Difficulty | Data Structures      | Patterns                                   | B75                | TIQ                | CCH                | CCI                | EPI                |
+| #    | LeetCode Link                                                                                               | Difficulty | Data Structures      | Patterns / Approaches                      | B75                | TIQ                | CCH                | CCI                | EPI                |
 |-----:|:------------------------------------------------------------------------------------------------------------|:-----------|:---------------------|:-------------------------------------------|:------------------:|:------------------:|:------------------:|:------------------:|:------------------:|
 | 0001 | [Two Sum](https://leetcode.com/problems/two-sum/)                                                           | Easy       | `Array` `Hash Table` |                                            | :heavy_check_mark: |                    | :heavy_check_mark: |                    |                    |
 | 0011 | [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                       | Medium     | `Array`              | `Two Pointers` `Greedy`                    | :heavy_check_mark: |                    |                    |                    |                    |
@@ -12,6 +12,7 @@
 | 0153 | [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/) | Medium     | `Array`              | `Binary Search`                            | :heavy_check_mark: |                    | :heavy_check_mark: |                    |                    |
 | 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)                                     | Easy       | `Array` `Hash Table` | `Sorting`                                  | :heavy_check_mark: |                    |                    |                    |                    |
 | 0238 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)                 | Medium     | `Array`              | `Prefix Sum`                               | :heavy_check_mark: |                    |                    |                    |                    |
+| 0371 | [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)                                   | Medium     |                      | `Math` `Bit Manipulation`                  | :heavy_check_mark: |                    |                    |                    |                    |
 
 # Lists
 
