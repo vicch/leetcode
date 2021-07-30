@@ -21,3 +21,9 @@
 | CCH  | [Clean Code Handbook](https://app.selz.com/item/546c6e1ab7987209fc7fd418)                                         |
 | CCI  | [Cracking the Coding Interview](https://www.crackingthecodinginterview.com/)                                      |
 | EPI  | [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)                                |
+
+# Solutions
+
+- [kamyu104/LeetCode-Solutions](https://github.com/kamyu104/LeetCode-Solutions)
+- [qiyuangong/leetcode](https://github.com/qiyuangong/leetcode)
+- [haoel/leetcode](https://github.com/haoel/leetcode)
