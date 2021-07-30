@@ -13,6 +13,7 @@
 | 0191 | [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)                                         | Easy       |                      | `Bit Manipulation`                         | :heavy_check_mark: |                    | :heavy_check_mark: |                    |                    |
 | 0217 | [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)                                     | Easy       | `Array` `Hash Table` | `Sorting`                                  | :heavy_check_mark: |                    |                    |                    |                    |
 | 0238 | [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)                 | Medium     | `Array`              | `Prefix Sum`                               | :heavy_check_mark: |                    |                    |                    |                    |
+| 0338 | [Counting Bits](https://leetcode.com/problems/counting-bits/)                                               | Easy       |                      | `Dynamic Programming` `Bit Manipulation`   | :heavy_check_mark: |                    |                    |                    |                    |
 | 0371 | [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)                                   | Medium     |                      | `Math` `Bit Manipulation`                  | :heavy_check_mark: |                    |                    |                    |                    |
 
 # Lists
