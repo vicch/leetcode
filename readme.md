@@ -13,3 +13,7 @@
 | Abbr | List                                                                                                              |
 |:-----|:------------------------------------------------------------------------------------------------------------------|
 | B75  | [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions) |
+| TIQ  | [Top Interview Questions](https://leetcode.com/explore/interview/card/top-interview-questions-easy/)              |
+| EPI  | [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/)                                |
+| CCI  | [Cracking the Coding Interview](https://www.crackingthecodinginterview.com/)                                      |
+| CLH  | [Clean Code Handbook](https://app.selz.com/item/546c6e1ab7987209fc7fd418)                                         |
