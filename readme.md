@@ -20,8 +20,9 @@
 | 0322 | [Coin Change](https://leetcode.com/problems/coin-change/)                                                  | Medium     | *  | [Python](/0300-0399/0322-coin-change/0322-coin-change.py)                                                   | `Array`              | `DP` `BFS`                 | :heavy_check_mark: |                    |                    |                    |                    |
 | 0338 | [Counting Bits](https://leetcode.com/problems/counting-bits/)                                              | Easy       |    | [Python](/0300-0399/0338-counting-bits/0338-counting-bits.py)                                               |                      | `DP` `Bit Manipulation`    | :heavy_check_mark: |                    |                    |                    |                    |
 | 0371 | [Sum of Two Integers](https://leetcode.com/problems/sum-of-two-integers/)                                  | Medium     | *  | [Python](/0300-0399/0371-sum-of-two-integers/0371-sum-of-two-integers.py)                                   |                      | `Math` `Bit Manipulation`  | :heavy_check_mark: |                    |                    |                    |                    |
+| 1143 | [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)                    | Medium     | *  | [Python](/1100-1199/1143-longest-common-subsequence/1143-longest-common-subsequence.py)                     | `String`             | `DP`                       | :heavy_check_mark: |                    |                    |                    |                    |
 
-- `*`: Didn't solve independently.
+- `*`: Didn't solve independently, or worth reviewing.
 - `**`: Not solved yet.
 
 # Lists
