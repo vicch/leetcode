@@ -1,7 +1,6 @@
 """
-Consider all the sub-arrays, the goal to find the one with the largest sum. For each number in the array, it
-either A) continues the sub-array up to its last element to make the sub-array's sum bigger, or B) starts
-another sub-array with a bigger sum on its own.
+Consider a number following a sub-array, the number either A) continues the sub-array to make its sum bigger, or
+B) starts another sub-array with a bigger sum on its own.
 
 As the iteration continues, maintain the current max sum of all sub-arrays processed so far. At the end of the
 array, it will be the max sum of all sub-arrays.
