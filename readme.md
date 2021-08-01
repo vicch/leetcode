@@ -24,7 +24,7 @@
 | 0377 | [Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/)                                    | Medium     |    | [Python](/0300-0399/0377-combination-sum-iv/0377-combination-sum-iv.py)                                     | `Array`                    | `DP`                       | :heavy_check_mark: |                    |                    |                    |                    |
 | 1143 | [Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)                    | Medium     | *  | [Python](/1100-1199/1143-longest-common-subsequence/1143-longest-common-subsequence.py)                     | `String`                   | `DP`                       | :heavy_check_mark: |                    |                    |                    |                    |
 
-- `*`: Didn't solve independently, or worth reviewing.
+`*`: Didn't solve independently, or worth reviewing.
 
 # Lists
 
