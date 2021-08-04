@@ -1,0 +1,27 @@
+"""
+User 2 pointer to start from head and tail and move towards the middle while comparing the charater pairs. Skip any
+non-alphanumeric character.
+"""
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        i, j = 0, len(s) - 1
+        while i < j:
+            if not s[i].isalnum():
+                i += 1
+                continue
+
+            if not s[j].isalnum():
+                j -= 1
+                continue
+
+            if s[i].lower() != s[j].lower():
+                return False
+
+            i += 1
+            j -= 1
+
+        return True
