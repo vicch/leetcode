@@ -28,6 +28,9 @@ class Solution(object):
             else:
                 pointer.next, l2 = l2, l2.next
             pointer = pointer.next
+
+        # If there is remaining nodes in either list, attach directly to the end of result list, as there are no more
+        # nodes to merge
         pointer.next = l1 or l2
 
         # Next of dummy node is head of result list
