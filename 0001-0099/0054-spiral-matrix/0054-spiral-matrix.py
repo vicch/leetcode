@@ -1,10 +1,10 @@
 """
 Consider the spiral path as "peeling" the matrix by layers:
 
-X X X X X X
+X X X X X X // top
+O . . . . O // left and right
 O . . . . O
-O . . . . O
-X X X X X X
+X X X X X X // bottom
 
 X and O are borders of the 1st layer, then it continues to the next layer.
 
