@@ -13,6 +13,7 @@
 |       | 0002 | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers)                | Medium     | [Python](/0001-0099/0002-add-two-numbers/0002-add-two-numbers.py)               | `Linked List`   | `Math` `Recursion`    |                    |       |       | :heavy_check_mark: | :heavy_check_mark: |
 |   *   | 0021 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy       | [Python](/0001-0099/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | `Linked List`   | `Recursion`           | :heavy_check_mark: |       |       |                    |                    |
 |       | 0024 | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)       | Medium     | [Python](/0001-0099/0024-swap-nodes-in-pairs/0024-swap-nodes-in-pairs.py)       | `Linked List`   | `Recursion`           |                    |       |       |                    | :heavy_check_mark: |
+|       | 0146 | [LRU Cache](https://leetcode.com/problems/lru-cache/)                           | Medium     | [Python](/0100-0199/0146-lru-cache/0146-lru-cache.py)                           | `Linked List`   |                       |                    |       |       | :heavy_check_mark: |                    |
 
 ## Stack
 
@@ -27,13 +28,13 @@
 
 ## Two Pointers
 
-|       |    # | LeetCode Link                                                                                             | Difficulty | Solution                                                                                                  | Data Structures | Patterns / Approaches    |        B75         |        CTCI        |  EPI  |        TIQ         |        TCQ         |  CCH  |
-| :---: | ---: | :-------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------------------------------------------------------------------------------- | :-------------- | :----------------------- | :----------------: | :----------------: | :---: | :----------------: | :----------------: | :---: |
-|       | 0011 | [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                     | Medium     | [Python](/0001-0099/0011-container-with-most-water/0011-container-with-most-water.py)                     | `Array`         | `Two Pointers` `Greedy`  | :heavy_check_mark: |                    |       |                    |                    |       |
-|   *   | 0015 | [3Sum](https://leetcode.com/problems/3sum/)                                                               | Medium     | [Python](/0001-0099/0015-3sum/0015-3sum.py)                                                               | `Array`         | `Two Pointers` `Sorting` | :heavy_check_mark: |                    |       | :heavy_check_mark: |                    |       |
-|       | 0016 | [3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                               | Medium     | [Python](/0001-0099/0016-3sum-closest/)                                                                   | `Array`         | `Two Pointers` `Sorting` |                    |                    |       |                    | :heavy_check_mark: |       |
-|   *   | 0019 | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)       | Medium     | [Python](/0001-0099/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py)       | `Linked List`   | `Two Pointers`           | :heavy_check_mark: | :heavy_check_mark: |       |                    |                    |       |
-|       | 0026 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy       | [Python](/0001-0099/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.py) | `Array`         | `Two Pointers`           |                    |                    |       | :heavy_check_mark: |                    |       |
+|       |    # | LeetCode Link                                                                                             | Difficulty | Solution                                                                                                  | Data Structures | Patterns / Approaches    |        B75         |        CTCI        |  EPI  |        TIQ         |  CCH  |
+| :---: | ---: | :-------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------------------------------------------------------------------------------- | :-------------- | :----------------------- | :----------------: | :----------------: | :---: | :----------------: | :---: |
+|       | 0011 | [Container With Most Water](https://leetcode.com/problems/container-with-most-water/)                     | Medium     | [Python](/0001-0099/0011-container-with-most-water/0011-container-with-most-water.py)                     | `Array`         | `Two Pointers` `Greedy`  | :heavy_check_mark: |                    |       |                    |       |
+|   *   | 0015 | [3Sum](https://leetcode.com/problems/3sum/)                                                               | Medium     | [Python](/0001-0099/0015-3sum/0015-3sum.py)                                                               | `Array`         | `Two Pointers` `Sorting` | :heavy_check_mark: |                    |       | :heavy_check_mark: |       |
+|       | 0016 | [3Sum Closest](https://leetcode.com/problems/3sum-closest/)                                               | Medium     | [Python](/0001-0099/0016-3sum-closest/)                                                                   | `Array`         | `Two Pointers` `Sorting` |                    |                    |       | :heavy_check_mark: |       |
+|   *   | 0019 | [Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/)       | Medium     | [Python](/0001-0099/0019-remove-nth-node-from-end-of-list/0019-remove-nth-node-from-end-of-list.py)       | `Linked List`   | `Two Pointers`           | :heavy_check_mark: | :heavy_check_mark: |       |                    |       |
+|       | 0026 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy       | [Python](/0001-0099/0026-remove-duplicates-from-sorted-array/0026-remove-duplicates-from-sorted-array.py) | `Array`         | `Two Pointers`           |                    |                    |       | :heavy_check_mark: |       |
 
 ## Sliding Window
 
@@ -185,14 +186,13 @@
 
 # Lists
 
-| Abbr | List                                                                                                                                                                            |
-| :--- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| B75  | [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)                                                               |
-| CTCI | [Cracking the Coding Interview](https://www.crackingthecodinginterview.com/), [Cracking the Coding Interview questions on Leetcode](https://ryanym.com/posts/ctci-on-leetcode/) |
-| EPI  | [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/), [EPI to LC](https://github.com/slgriff/EPI-to-LC)                                           |
-| TIQ  | [Top Interview Questions](https://leetcode.com/explore/interview/card/top-interview-questions-easy/)                                                                            |
-| TCQ  | [Top Company Questions](https://leetcode.com/problem-list/top-facebook-questions/)                                                                                              |
-| CCH  | [Clean Code Handbook](https://app.selz.com/item/546c6e1ab7987209fc7fd418)                                                                                                       |
+| Abbr | List                                                                                                                                                                                       |
+| :--- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| B75  | [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)                                                                          |
+| CTCI | [Cracking the Coding Interview](https://www.crackingthecodinginterview.com/), [Cracking the Coding Interview questions on Leetcode](https://ryanym.com/posts/ctci-on-leetcode/)            |
+| EPI  | [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/), [EPI to LC](https://github.com/slgriff/EPI-to-LC)                                                      |
+| TIQ  | [Top Interview Questions](https://leetcode.com/explore/interview/card/top-interview-questions-easy/), [Top Interview Questions](https://leetcode.com/problem-list/top-facebook-questions/) |
+| CCH  | [Clean Code Handbook](https://app.selz.com/item/546c6e1ab7987209fc7fd418)                                                                                                                  |
 
 # Solutions
 
