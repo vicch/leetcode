@@ -14,6 +14,7 @@
 |   *   | 0021 | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy       | [Python](/0001-0099/0021-merge-two-sorted-lists/0021-merge-two-sorted-lists.py) | `Linked List`   | `Recursion`           | :heavy_check_mark: |       |       |                    |                    |
 |       | 0024 | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)       | Medium     | [Python](/0001-0099/0024-swap-nodes-in-pairs/0024-swap-nodes-in-pairs.py)       | `Linked List`   | `Recursion`           |                    |       |       |                    | :heavy_check_mark: |
 |       | 0146 | [LRU Cache](https://leetcode.com/problems/lru-cache/)                           | Medium     | [Python](/0100-0199/0146-lru-cache/0146-lru-cache.py)                           | `Linked List`   |                       |                    |       |       | :heavy_check_mark: |                    |
+|   *   | 0148 | [Sort List](https://leetcode.com/problems/sort-list/)                           | Medium     | [Python](/0100-0199/0148-sort-list/0148-sort-list.py)                           | `Linked List`   | `Divide and Conquer`  |                    |       |       | :heavy_check_mark: |                    |
 
 ## Stack
 
