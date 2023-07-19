@@ -191,7 +191,7 @@
 | Abbr | List                                                                                                                                                                                       |
 | :--- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | B75  | [Blind 75 LeetCode Questions](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)                                                                          |
-| CTCI | [Cracking the Coding Interview](https://www.crackingthecodinginterview.com/), [Cracking the Coding Interview questions on Leetcode](https://ryanym.com/posts/ctci-on-leetcode/)            |
+| CTCI | [Cracking the Coding Interview](https://leetcode.com/discuss/general-discussion/1152824/Cracking-The-Coding-Interview-6th-Edition-In-LeetCode)                                             |
 | EPI  | [Elements of Programming Interviews](https://elementsofprogramminginterviews.com/), [EPI to LC](https://github.com/slgriff/EPI-to-LC)                                                      |
 | TIQ  | [Top Interview Questions](https://leetcode.com/explore/interview/card/top-interview-questions-easy/), [Top Interview Questions](https://leetcode.com/problem-list/top-facebook-questions/) |
 | CCH  | [Clean Code Handbook](https://app.selz.com/item/546c6e1ab7987209fc7fd418)                                                                                                                  |
