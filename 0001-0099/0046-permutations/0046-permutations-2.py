@@ -1,3 +1,6 @@
+"""
+Typical backtracking. Use a stack to keep track of the path, instead of passing it along the recursive calls.
+"""
 class Solution(object):
     def permute(self, nums):
         """
