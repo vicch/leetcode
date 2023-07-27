@@ -1,13 +1,13 @@
 """
-It's really easy to handle this as a combinations problem, where generate(n) becomes:
+It's really tempting to consider this as a combinations problem, where generate(n) becomes:
 generate(1) * generate(n - 1) + generate(2) * generate(n - 2) + ...
 But the combinations will contain duplidates, e.g. () + ()() = ()() + ()
 
-It's actually easier as a linear string generation with backtracking:
+It's actually a string generation process with backtracking:
 - For each step, either a "(" or ")" can be attached to current string.
 - "(" can be attached, unless there are already n of them.
 - ")" can be attached, unless there are more or equal number of ")" than "(".
-- It reaches the bottom when there are n "(" and ")".
+- Bottom is reached when there are n "(" and ")".
 """
 class Solution(object):
     def generateParenthesis(self, n):
