@@ -4,8 +4,8 @@ By defintion, for each node in a BST:
 - All nodes on its left tree must be smaller than this node's value.
 - All nodes on its right tree must be larger than this node's value.
 
-The boundaries and transitive and only become more strict for all sub-trees at lower level. So just pass the current
-left and right border for each tree node, and update the borders to recursively check sub-trees.
+The boundaries are transitive, and become more strict for sub-trees at lower level. So just pass the current
+left and right boundary for each tree node recursively, and update accordingly.
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -23,10 +23,10 @@ class Solution(object):
             if not root:
                 return True
             # If current node is out of range, it's not valid
-            if (left is not None and root.val <= left) or (right is not None and root.val >= right):
+            if root.val <= left or root.val >= right:
                 return False
             # Recursively check child trees
             return isValid(root.left, left, root.val) and isValid(root.right, root.val, right)
 
         # Use none to indicate no limit
-        return isValid(root, None, None)
+        return isValid(root, float('-inf'), float('inf'))
