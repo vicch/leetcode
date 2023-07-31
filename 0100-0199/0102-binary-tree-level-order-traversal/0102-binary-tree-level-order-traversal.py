@@ -1,5 +1,5 @@
 """
-The travesal of each level and its next level and be done via a queue:
+Essentially a staged BFS, by swtiching to a new queue at the end of each stage.
 
 - For each node, push its child nodes to the queue, and collect its value.
 - When this queue runs out, meaning all nodes of current level are visited, then continue to the next level via the
