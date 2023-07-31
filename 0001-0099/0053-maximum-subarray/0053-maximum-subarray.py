@@ -1,9 +1,11 @@
 """
-Consider a number following a sub-array, the number either A) continues the sub-array to make its sum bigger, or
-B) starts another sub-array with a bigger sum on its own.
+This is solvable with Kadane's Algorithm.
 
-As the iteration continues, maintain the current max sum of all sub-arrays processed so far. At the end of the
-array, it will be the max sum of all sub-arrays.
+Find the DP factor: suppose we have the max of all sub-arrays that end on a[n] which is a[x:n], then for max-array that
+ends on a[n+1], it's either extending a[x:n] to a[x:n+1], or just a[n+1] itself.
+
+Then with the local max that ends on each individual element, maintain a global max. At the end, the global max is the
+result.
 """
 class Solution(object):
     def maxSubArray(self, nums):
@@ -11,9 +13,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        sub_sum, max_sum = nums[0], nums[0]
+        localmax, globalmax = nums[0], nums[0]
         for n in nums[1:]:
         	# Either the current sub-array continues, or a new sub-array with bigger sum starts
-            sub_sum = max(sub_sum + n, n)
-            max_sum = max(max_sum, sub_sum)
-        return max_sum
+            localmax = max(localmax + n, n)
+            globalmax = max(globalmax, localmax)
+        return globalmax
