@@ -1,3 +1,7 @@
+"""
+Not a typical DP problem, but basically the best profit if selling at a particular point is price[n] - min(price[0:n]).
+With this local optimal, maintain a global optimal, which is the answer in the end.
+"""
 class Solution(object):
     def maxProfit(self, prices):
         """
