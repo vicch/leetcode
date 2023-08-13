@@ -15,16 +15,14 @@ class Solution(object):
         if len(s) != len(t):
             return False
 
-        counts = {}
-
+        counts = collections.defaultdict(int)
+        
         for c in s:
-            if c not in counts:
-                counts[c] = 0
             counts[c] += 1
-
+            
         for c in t:
-            if c not in counts or counts[c] <= 0:
-                return False
             counts[c] -= 1
+            if counts[c] < 0:
+                return False
 
         return True
