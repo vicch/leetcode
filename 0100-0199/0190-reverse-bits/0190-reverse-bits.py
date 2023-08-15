@@ -4,7 +4,8 @@ reversed number while left shifting.
 
 Follow up: If this function is called many times, how would you optimize it?
 
-We can trade space for time, by pre-computing a lookup array for chunks of N bits and their respective reversed version.
+If it's called many times, then probably all combinations of bits will be encountered. We can trade space for time, by
+pre-computing a lookup array for chunks of N bits and their respective reversed version.
 
 cache = [reverse(i) for i in range(256)]
 def reverse(n):
