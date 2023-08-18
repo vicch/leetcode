@@ -1,10 +1,14 @@
 """
-Essentially a staged BFS, by swtiching to a new queue at the end of each stage.
+A typical BFS problem, key is to know when it continues to the next level of nodes. This can be achieved by keeping 2
+queues for each level:
 
-- For each node, push its child nodes to the queue, and collect its value.
-- When this queue runs out, meaning all nodes of current level are visited, then continue to the next level via the
-nodes queue populated in this level.
-- Continue till the queue of next level becomes empty.
+- One queue of current level nodes, which is drained at the end.
+- Another queue for next level nodes, which is swapped to the first queue at the end.
+
+Then for each level, collect the node values and append to the result list.
+
+Time: O(n)
+Space: O(n + m), m = diameter of tree, for the BFS queues
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
