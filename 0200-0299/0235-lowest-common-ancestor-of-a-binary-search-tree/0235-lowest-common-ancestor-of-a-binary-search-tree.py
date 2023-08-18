@@ -4,6 +4,9 @@ ancestor node of the other), i.e. the node's value is between the values of p an
 root node, and move to proper child tree so that the next node's value moves towards the range between p and q.
 
 As soon as there is no more movement to next level, the LCA node is found.
+
+Time: O(logn) for balanced BST, otherwise O(n) for worst case
+Space: O(1)
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
