@@ -1,6 +1,9 @@
 """
 Binary search to find a certain amount. It's a search of upper bound instead of exact match. The tricky part is the
 boundary conditions and the "binary" approach.
+
+Time: O(n * logm), n is number of piles, m is search space
+Space: O(1)
 """
 class Solution(object):
     def minEatingSpeed(self, piles, h):
@@ -10,6 +13,7 @@ class Solution(object):
         :rtype: int
         """
         def computeHours(k):
+            # List comprehension is more compact, but takes O(n) space.
             hours = 0
             for p in piles:
                 hours += math.ceil(1.0 * p / k)
