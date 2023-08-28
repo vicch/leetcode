@@ -5,7 +5,7 @@ It's a 2-phase binary search:
 
 The tricky part is the boundary conditions, esp. for the 1st phase of finding lower bound.
 
-Time: O(logm*n)
+Time: O(logmn)
 Space: O(1)
 """
 class Solution(object):
