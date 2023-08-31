@@ -1,8 +1,8 @@
 """
-Similar to #104 Maximum Depth of Binary Tree, where the max depths of child trees determine if a binary tree is
-balanced. The difference is, as soon as a sub-tree is unbalanced, the DFS traversal can return right away. And to do
-this, a special return value -1 can be used to indicate a sub-tree is unbalanced, because normal DFS to get tree depth
-won't return -1.
+Naturally a recursive problem: a balanced tree is recursively balanced, so if any child tree isn't balanced, the
+recursive check can pop all the way up and return false.
+
+But if a child tree is balanced, it needs to return its depth to upper level for the balance check.
 """
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -16,23 +16,25 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
+        
+        # Returns a tuple, of a boolean indicating if the current tree is balanced, and an int of the tree's depth.
+        def checkTree(node):
+            if not node:
+                return True, 0
+            
+            # Return early if any child tree is not balanced. The depth is irrelevant in such case, just return 0.
+            left = checkTree(node.left)
+            if not left[0]:
+                return False, 0
+            right = checkTree(node.right)
+            if not right[0]:
+                return False, 0
 
-        def getDepth(root):
-            if not root:
-                return 0
+            # If child trees are balanced, but current tree isn't.
+            if abs(left[1] - right[1]) > 1:
+                return False, 0
 
-            left = getDepth(root.left)
-            right = getDepth(root.right)
+            # If current tree is balanced, return its depth.
+            return True, max(left[1], right[1]) + 1
 
-            # If any child tree is unbalanced, return right away
-            if left == -1 or right == -1:
-                return -1
-
-            # If this tree is unbalanced, return -1
-            if abs(left - right) > 1:
-                return -1
-
-            # Return normal max depth of current tree
-            return max(left, right) + 1
-
-        return getDepth(root) != -1
+        return checkTree(root)[0]
