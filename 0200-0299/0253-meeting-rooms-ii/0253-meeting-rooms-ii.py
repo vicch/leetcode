@@ -1,10 +1,33 @@
 """
-The question is asking for the maximum number of concurrent meetings, i.e. the maximum number of meetings that have
-overlapping times. 2 meetings overlap if the one that started earlier hasn't finished when the other starts. So an
-ordering of the meetings by their starting time is important, which can achieved by sorting.
+The question is asking for the maximum number of concurrent meetings. When a meeting starts, the number of other
+meetings that haven't finished, i.e. the number of meeting with ending time larger than its start start, is equal to
+the number of concurrent meetings of this meeting.
 
-With the meetings sorted by starting times, iterate them and keep track of the finishing times of currently overlapping
-meetings. This running number is the number of concurrent meetings at those points. Maintain a global max value for this
-running number. And when the next meeting starts, push its finishing time to the list, and remove meetings that have
-ended from the list when it starts.
+Naturally to reduce unnecessary check, we should iterate the meetings by their starting time in ascending order, and
+keep a list of previous meetings' end times. The list should prune all end times that are past when this meeting starts.
+Then this meeting's end time is pushed to the list.
+
+As the meeting end times aren't necessarily sorted, to be able to iterate the list of end times in ascending order
+while inserting and removing elements, it's natrual to use a min heap.
+
+Time: O(nlogn), sorting is O(nlogn) already, and each meeting will be pushed to heap at least once, and popped at most
+once, so O(logn) * n * 2, overall it's O(nlogn)
+Space: O(n)
 """
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
+        intervals.sort(key=lambda i: i[0])
+        endtimes = []
+        maxconcurrent = 0
+        
+        for i in intervals:
+            while len(endtimes) > 0 and endtimes[0] <= i[0]:
+                heapq.heappop(endtimes)
+            heapq.heappush(endtimes, i[1])
+            maxconcurrent = max(len(endtimes), maxconcurrent)
+    
+        return maxconcurrent
