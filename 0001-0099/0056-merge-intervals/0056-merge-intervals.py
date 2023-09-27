@@ -4,6 +4,9 @@ merged interval is [i[0], max(i[1], j[1])].
 
 So by sorting the intervals with left values, then iterate the intervals and merge overlapping ones along the way, the
 result will contain all intervals with the mergable ones merged.
+
+Time: O(nlogn) for sorting.
+Space: O(n) for the merged list.
 """
 class Solution(object):
     def merge(self, intervals):
@@ -11,19 +14,16 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        # Sort all intervals by left values
-        intervals.sort(key=lambda pair: pair[0])
+        intervals.sort(key=lambda x: x[0])
         
-        merged = []
-        for i in range(len(intervals) - 1):
-            # If this interval can be merged with next, merge them and overwrite to the next interval
-            if intervals[i][1] >= intervals[i+1][0]:
-                intervals[i+1] = [intervals[i][0], max(intervals[i][1], intervals[i+1][1])]
-            # If the interval cannot be merged any more, push it to the final intervals
+        # Init with first interval.
+        merged = [intervals[0]]
+
+        for x, y in intervals[1:]:
+            # If overlapping, merge and extend last interval.
+            if x <= merged[-1][1]:
+                merged[-1][1] = max(merged[-1][1], y)
             else:
-                merged.append(intervals[i])
-
-        # Push the last interval
-        merged.append(intervals[-1])
-
+                merged.append([x, y])
+        
         return merged
