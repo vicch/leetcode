@@ -1,5 +1,6 @@
 """
-Keep a second internal stack to store the currently smallest value corresponding to the element in the main stack.
+Keep a second stack to store the currently min value corresponding to the element in the main stack. By keeping the main
+and min stacks in a 1:1 relation in terms of items count, they are always pushed and popped at the same time for sync.
 
 1. Init stacks: main = [],         mins = []
 2. Push:        main = [2],        mins = [2]         // 2 is currently the smallest value in main stack
@@ -22,7 +23,7 @@ class MinStack(object):
         :rtype: None
         """
         self.nums.append(val)
-        # Push the smallest value up to this point
+        # Push the min value up to this point
         self.mins.append(self.mins[-1] if self.mins and self.mins[-1] < val else val)
 
     def pop(self):
@@ -31,7 +32,7 @@ class MinStack(object):
         """
         # Pop from both stacks
         self.mins.pop()
-        return self.nums.pop()
+        self.nums.pop()
 
     def top(self):
         """
@@ -44,11 +45,3 @@ class MinStack(object):
         :rtype: int
         """
         return self.mins[-1] if self.mins else None
-
-
-# Your MinStack object will be instantiated and called as such:
-# obj = MinStack()
-# obj.push(val)
-# obj.pop()
-# param_3 = obj.top()
-# param_4 = obj.getMin()
