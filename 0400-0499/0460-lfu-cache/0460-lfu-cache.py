@@ -1,4 +1,6 @@
 """
+[NEED_REVIEW]
+
 Firstly, for O(1) read of cache values by keys, it requires a hashmap. And besides the value, we also need to maintain
 the access frequency per key. It could be 2 separate maps, or 1 unified map with the value and frequency in an array
 (tuples are immutable).
