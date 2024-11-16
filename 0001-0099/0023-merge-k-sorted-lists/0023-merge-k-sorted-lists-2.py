@@ -1,3 +1,15 @@
+"""
+Brute-force solution: collect and sort all node values, then create a new linked list with the sorted values.
+
+If the nodes contain more data and are expensive to re-create, we can sort a list[(nodeField, nodeRef)] by the field value, then chain up the
+node refs into a new list.
+
+Time complexity:
+- O(NlogN), N = number of nodes, for sorting.
+
+Space complexity:
+- O(N), for lists.
+"""
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, val=0, next=None):
