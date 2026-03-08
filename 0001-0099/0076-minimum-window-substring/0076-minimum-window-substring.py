@@ -1,27 +1,47 @@
 """
-[NEED_REVIEW]
+# Problem Type & Pattern
 
-The min window has to start on a certain index, so the brute force solution is to attempt each index, look for the local min window and maintain
-a global min. The issue is repeatedly traversing the substrings, leading to a O(N^2) complexity.
+A classic sliding window problem. We need to find the minimum contiguous substring 
+in S that contains all characters from T (including duplicates). The window expands 
+and contracts based on character counts, shrinking from the left when all requirements 
+are met to find the optimal size.
 
-The key of improved solution is sliding window, where we only need to check the chars on the borders when extending or shrinking the window.
-The approach is:
+# Solution Explanation
 
-1. Extend right pointer of the window until a fulfilling substring is found, i.e. all required chars are included in the window.
-2. Shrink left pointer while keeping the required chars fulfilled, and update the global optimal result if current window is better.
-3. Continue step 1 until the end is reached.
+## Step 1 - Brute Force Idea
 
-To check if all required chars are fulfilled, we maintain a hashmap of char counts in the window, whenever a count reaches the required count in
-string T, mark the char as fulfilled. When all chars are fulfilled, a good window is reached.
+For each starting index in S, expand the end index until the substring contains 
+all characters from T (respecting duplicates), then track the smallest substring found.
 
-The trick is the flow control, which can be simplified via proper while conditions.
+This is O(N²) because for each start position we scan the rest of the string, and 
+overlapping windows cause repeated work without reusing any information.
 
-Time complexity:
-- O(S+T), as the window pointers move through string S almost twice, and string T is traversed to get char counts.
+## Step 2 - Optimization Insight
 
-Space complexity:
-- O(1), as we only store char counts, and the cardinality is constant.
+Instead of restarting from every index, maintain a window [l, r] and slide it across 
+the string. Only the border characters change when expanding or shrinking, so we can 
+update character counts incrementally rather than recomputing from scratch.
+
+This sliding window approach lets each character enter and leave the window at most once.
+
+## Step 3 - Final Optimal Strategy
+
+1. Track required character counts from T and maintain running counts in the current window.
+2. Expand the right pointer to grow the window, incrementing counts. When a character's 
+   count matches its required count, we've satisfied one more distinct requirement.
+3. Once all requirements are met, shrink from the left while maintaining validity — update 
+   the best window each time we successfully shrink without breaking validity.
+4. When shrinking would break a requirement, stop and resume expanding the right pointer.
+
+The key design is tracking "achieved" requirements — we only need to know how many distinct 
+characters have met their count threshold, not the exact counts at every step.
+
+## Complexity
+
+Time: O(|S| + |T|) — each pointer traverses S at most once, and we build requiredCounts in O(|T|).
+Space: O(1) — character counts are bounded by alphabet size (constant).
 """
+
 class Solution(object):
     def minWindow(self, s, t):
         """
@@ -29,34 +49,34 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
-        counts = Counter(t)
+        requiredCounts = Counter(t)
         windowCounts = defaultdict(int)
 
-        required = len(counts)
+        required = len(requiredCounts)
         achieved = 0
 
         l, r = 0, 0
-        optimalL, optimalR = -1, len(s)
+        lOptimal, rOptimal = -1, len(s)
 
         while r < len(s):
-            char = s[r]
-            windowCounts[char] += 1
+            rChar = s[r]
+            windowCounts[rChar] += 1
 
-            if char in counts and windowCounts[char] == counts[char]:
+            if rChar in requiredCounts and windowCounts[rChar] == requiredCounts[rChar]:
                 achieved += 1
 
             while l <= r and achieved == required:
-                if r - l < optimalR - optimalL:
-                    optimalL, optimalR = l, r
+                if r - l < rOptimal - lOptimal:
+                    lOptimal, rOptimal = l, r
 
-                char = s[l]
-                windowCounts[char] -= 1
+                lChar = s[l]
+                windowCounts[lChar] -= 1
                 
-                if char in counts and windowCounts[char] < counts[char]:
+                if lChar in requiredCounts and windowCounts[lChar] < requiredCounts[lChar]:
                     achieved -= 1
                 
                 l += 1
             
             r += 1
         
-        return s[optimalL:optimalR+1] if optimalL >= 0 else ""
+        return s[lOptimal:rOptimal+1] if lOptimal >= 0 else ""
