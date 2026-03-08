@@ -1,11 +1,12 @@
 """
-This is a stateful reachability problem where state = (stone position, last jump length).
-Unlike classic stairs DP where we only track reachable steps, here we must track which k
-values were used to reach each stone because next jumps depend on the previous k.
+Stateful reachability where state = (stone position, last jump length). Unlike classic
+stairs DP, we must track which k values were used to reach each stone because next
+jumps depend on the previous k.
 
-Key insight: Reaching the same stone with different k values produces different futures.
-Example: reaching stone 10 with k=2 allows next jumps of 1,2,3, but reaching it with
-k=4 allows next jumps of 3,4,5. So state must include (position, k).
+Two pruning tricks that make this problem much easier:
+1. Early impossibility check: if stones[i] - stones[i-1] > i, impossible to reach stone i
+   (max jump at position i cannot exceed i, since jumps increase at most by +1)
+2. Only consider positive jumps (k-1, k, k+1 where jump > 0)
 
 DP approach: dp[stone] = set of k values that can reach this stone. Process stones
 sequentially, propagate k-1,k,k+1 jumps to valid next stones. Stop when we can reach
@@ -20,27 +21,35 @@ class Solution(object):
         :type stones: List[int]
         :rtype: bool
         """
-        # Map stone position to its index for O(1) lookup
-        stone_to_idx = {pos: i for i, pos in enumerate(stones)}
+        # Pruning 1: early impossibility check
+        # At stone i, max possible jump cannot exceed i (jumps increase at most by +1)
+        for i in range(1, len(stones)):
+            if stones[i] - stones[i-1] > i:
+                return False
 
-        # dp[i] = set of k values that can reach stone i
-        dp = [set() for _ in range(len(stones))]
-        dp[0].add(0)  # Start at first stone with last jump = 0
+        # Use set for O(1) stone existence check
+        stone_set = set(stones)
 
-        for i in range(len(stones)):
-            for k in dp[i]:
-                # Try jumps of k-1, k, k+1 (skip if jump <= 0)
-                for jump in [k-1, k, k+1]:
+        # dp[stone] = set of jump sizes that can reach this stone
+        dp = {stone: set() for stone in stones}
+        dp[0].add(0)
+
+        last_stone = stones[-1]
+
+        for stone in stones:
+            for k in dp[stone]:
+                # Pruning 2: only consider positive jumps
+                for jump in (k-1, k, k+1):
                     if jump <= 0:
                         continue
 
-                    next_pos = stones[i] + jump
-                    if next_pos in stone_to_idx:
-                        next_idx = stone_to_idx[next_pos]
-                        dp[next_idx].add(jump)
+                    next_pos = stone + jump
 
-                        # Early exit if we can reach the last stone
-                        if next_idx == len(stones) - 1:
-                            return True
+                    # Early exit if we can reach the last stone
+                    if next_pos == last_stone:
+                        return True
 
-        return len(dp[-1]) > 0
+                    if next_pos in stone_set:
+                        dp[next_pos].add(jump)
+
+        return False
